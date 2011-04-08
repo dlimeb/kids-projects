@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Super Secret Spy Messager!</title>
+    <style type="text/css" media="all">
+        body {
+            padding: 50px;
+            font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            background: #dff198 url(bg-star.png) no-repeat left top;
+            color: #333;
+        }
+        form {
+            margin-top: 50px;
+        }
+        #Shift { 
+            display: none;
+            width: 50px;
+        }
+
+        textarea {
+            width: 400px;
+            height: 100px;
+            font-size: 16px;
+        }
+
+        input[name="submit"] {
+            font-size: 16px;
+        }
+
+        #Results {
+            display: none;
+        }
+        
+        #Results div {
+            font-family: Monaco, monospace;
+            font-weight: bold;
+            font-size: 18px;
+            color: #31a5af;
+            background: #e6f4ad;
+            padding: 10px;
+            width: 380px;
+        }
+
+        #Suprise {
+            color: #93b;
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            text-decoration: none;
+        }
+        #Supercorn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: none;
+        }
+
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        function transform(message, shift, direction){
+            var message = message.toLowerCase(),
+                alphabet = 'abcdefghijklmnopqrstuvwxyz1234567890',
+                shift = parseInt(shift, 10),
+                output = '';
+
+            for (var i = 0, max = message.length; i < max; i++) {
+                var letter = message[i],
+                    index = alphabet.indexOf(letter),
+                    newIndex;
+
+                if (index == -1) {
+                    output += letter;
+                } else {
+                    if (direction == "scramble") {
+                        newIndex = index - shift;
+                        if (newIndex < 0) {
+                            newIndex += 36;
+                        }
+                    } else {
+                        newIndex = (index + shift) % 36;
+                    }
+                    output += alphabet.charAt(newIndex);
+                }
+            }
+            return output;
+        }
+
+        $(function(){
+            $('form').submit(function(e){
+                e.preventDefault();
+                var message = $("#id_message").val();
+
+                if (message == "") {
+                    alert("Hey silly! You forgot to type a message! Try again.");
+                } else {
+                    var shift = $("#id_shift").val(),
+                        direction = $("input[name='direction']:checked").val(),
+                        results = transform(message, shift, direction);
+
+                    $("#Results")
+                        .show()
+                        .find("div")
+                        .html(results.toUpperCase());
+                }
+            });
+
+            $("#Surprise").click(function(e){
+                e.preventDefault();
+                $("#Supercorn").slideToggle();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <img id="Logo" src="super-secret.png" />
+    <form action="" method="post">
+        <p id="Direction"><strong>What do you want to do?</strong><br />
+            <input type="radio" name="direction" value="scramble" id="id_scramble" checked="checked"> <label for="id_scramble">Scramble</label><br />
+            <input type="radio" name="direction" value="unscramble" id="id_unscramble"> <label for="id_unscramble">Unscramble</label>
+        </p>
+        <p id="Shift">
+            <label for="id_shift"><strong>Shift:</strong></label><br />
+            <input type="number" min="1" max="35" step="1" value="7" name="shift" id="id_shift" />
+        </p>
+        <p>
+            <label for="id_message"><strong>Type your message here:</strong></label><br />
+            <textarea name="message" id="id_message"></textarea>
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Let's see the message!">
+        </p>
+    </form>
+
+    <div id="Results">
+        <p><strong>Your message is...</strong></p>
+        <div></div>
+    </div>
+
+    <div>
+        <a id="Surprise" href="#">♥</a>
+        <img id="Supercorn" src="supercorn.gif" />
+    </div>
+</body>
+</html>
