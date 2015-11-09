@@ -43,13 +43,18 @@ while number_of_guesses < 5:
         if number_of_guesses is 1:
             print "Holy moly, you got it in one guess!"
         else:
-            print "You got it in %s guesses!" % number_of_guesses 
+            print "You got it in %s guesses!" % number_of_guesses
         break
     else:
+        num_guesses_left = 5 - number_of_guesses
         if the_guess in guesses_so_far:
             print "Oh my chick peas! You guessed that already!!"
         else:
-            print "Sorry, that wasn't it. You have %s left!" % (5 - number_of_guesses)
+            if num_guesses_left == 1:
+                guess_string = "guess"
+            else:
+                guess_string = "guesses"
+            print "Sorry, that wasn't it. You have %s %s left!" % (num_guesses_left, guess_string)
 
         guesses_so_far.append(the_guess)
 

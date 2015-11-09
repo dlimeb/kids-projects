@@ -9,6 +9,7 @@ print "OK", your_name
 print "Choose a way to scramble your name:"
 print "  1. Make it uppercase."
 print "  2. Make it backwards."
+print "  3. Make it tall."
 
 your_choice = ""
 while not your_choice:
@@ -18,5 +19,9 @@ if your_choice is "1":
     print "Your name scrambled is:", your_name.upper()
 if your_choice is "2":
     print "Your name scrambled is:", your_name[::-1]
+if your_choice is "3":
+    print "Your name scrambled is:",
+    for l in your_name:
+        print l + " "
 
 print "That's it. Bye bye!"

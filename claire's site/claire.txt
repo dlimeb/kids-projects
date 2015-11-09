@@ -1,0 +1,21 @@
+* decide on what to call it -- Balloon Critters
+* make the web pages
+    1 main home page
+        * hello i'm claire...
+        * if it's for a bday -- free decorations
+        * i'm available most time b/c i'm homeschooled
+        * contact info
+    2 list of animals you can make
+        * sword
+        * dog
+        * bunny
+        * monkey
+        
+        claire will memorize -- coming soon!
+        * croc
+        * hat
+        * flower
+        * ladybug bracelet
+    3 price -- $20 for one hour, $10 for half an hour
+
+* host the web pages

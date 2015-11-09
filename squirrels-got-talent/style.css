@@ -1,0 +1,44 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  	background-color: #DEA9D1;
+}
+
+h1 {
+  color: #00FF08;
+  font-family: "Lucida Console", monospace;
+  font-size: 40px;
+  padding: 100px;
+  text-align: center;
+}
+
+.title {
+	background-color: #464874;
+}
+.title img {
+	vertical-align: middle;
+}
+
+h3 {
+  color: #FF00EA;
+}
+
+p {
+  color:skyblue;
+}
+
+.photos img {
+	border-radius: 50%;
+	width: 300px;
+	border: 10px solid purple;
+}
+
+.about p {
+	font-style: italic;
+}
+
+h2 {
+	color: #fff700;
+}
+li {
+	color: #4DF080;
+}
